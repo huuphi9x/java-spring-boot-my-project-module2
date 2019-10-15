@@ -1,6 +1,10 @@
 package com.codegym.javamyprojectmodule2.model;
 
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
+
 import javax.persistence.*;
+
 
 
 @Entity
@@ -68,4 +72,5 @@ public class Club {
     public void setNational(String national) {
         this.national = national;
     }
+
 }

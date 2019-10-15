@@ -16,4 +16,14 @@ public class ClubServiceImpl implements ClubService {
     public Page<Club> findAll(Pageable pageable) {
         return clubRepository.findAll(pageable);
     }
+
+    @Override
+    public Club save(Club club) {
+        return clubRepository.save(club);
+    }
+
+//    @Override
+//    public Club findById(Long id) {
+//        return clubRepository.findOne(id);
+//    }
 }
