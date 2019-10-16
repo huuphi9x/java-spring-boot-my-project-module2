@@ -6,7 +6,12 @@ import com.codegym.javamyprojectmodule2.service.ClubService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
+@Service
 public class ClubServiceImpl implements ClubService {
 
     @Autowired
@@ -22,8 +27,21 @@ public class ClubServiceImpl implements ClubService {
         return clubRepository.save(club);
     }
 
+    @Override
+    public Optional<Club> findById(Long id) {
+        return clubRepository.findById(id);
+    }
+
+    @Override
+    public void remove(Long id) {
+        clubRepository.deleteById(id);
+
+    }
+
 //    @Override
-//    public Club findById(Long id) {
-//        return clubRepository.findOne(id);
+//    public List<Club> findAllByName(String name) {
+//        return clubRepository.findAllByName(name);
 //    }
+
+
 }

@@ -13,6 +13,8 @@
         <td>Stadium</td>
         <td>Tournaments</td>
         <td>National</td>
+        <td>Edit</td>
+        <td>Delete</td>
     </tr>
         <th:block th:each="club : ${clubs}">
           <tr>
@@ -20,6 +22,8 @@
               <td th:text="${club.stadium}"></td>
               <td th:text="${club.tournaments}"></td>
               <td th:text="${club.national}"></td>
+              <td><a th:href="@{/edit-club/__${club.id}__ }">Edit</a></td>
+              <td><a th:href="@{/delete-club/__${club.id}__ }">Delete</a></td>
           </tr>
         </th:block>
 </table>
