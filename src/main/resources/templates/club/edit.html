@@ -5,7 +5,7 @@
 </head>
 <body>
 <p>
-    <a href="/">Back to list of club</a>
+    <a href="/static">Back to list of club</a>
 </p>
 <form th:action="@{/edit-club}" th:object="${club}" method="post">
     <input th:type="hidden" name="id" th:field="*{id}">

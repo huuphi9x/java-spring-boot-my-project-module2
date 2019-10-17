@@ -3,11 +3,9 @@ package com.codegym.javamyprojectmodule2.model;
 
 import javax.persistence.*;
 
-
-
 @Entity
-@Table(name = "club")
-public class Club {
+@Table(name = "player")
+public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,20 +13,15 @@ public class Club {
 
     private String name;
 
-    private String stadium;
+    private int age;
 
-    private String tournaments;
+    private String position;
 
     private String national;
 
-    public Club() {
-    }
+    private String club;
 
-    public Club(String name, String stadium, String tournaments, String national) {
-        this.name = name;
-        this.stadium = stadium;
-        this.tournaments = tournaments;
-        this.national = national;
+    public Player() {
     }
 
     public Long getId() {
@@ -47,20 +40,20 @@ public class Club {
         this.name = name;
     }
 
-    public String getStadium() {
-        return stadium;
+    public int getAge() {
+        return age;
     }
 
-    public void setStadium(String stadium) {
-        this.stadium = stadium;
+    public void setAge(int age) {
+        this.age = age;
     }
 
-    public String getTournaments() {
-        return tournaments;
+    public String getPosition() {
+        return position;
     }
 
-    public void setTournaments(String tournaments) {
-        this.tournaments = tournaments;
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public String getNational() {
@@ -71,4 +64,11 @@ public class Club {
         this.national = national;
     }
 
+    public String getClub() {
+        return club;
+    }
+
+    public void setClub(String club) {
+        this.club = club;
+    }
 }

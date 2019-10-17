@@ -38,10 +38,10 @@ public class ClubServiceImpl implements ClubService {
 
     }
 
-//    @Override
-//    public List<Club> findAllByName(String name) {
-//        return clubRepository.findAllByName(name);
-//    }
+    @Override
+    public List<Club> findByName(String name) {
+        return clubRepository.findAllByNameContains(name);
+    }
 
 
 }

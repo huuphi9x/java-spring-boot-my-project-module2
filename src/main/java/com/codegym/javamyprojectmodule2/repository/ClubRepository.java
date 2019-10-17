@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface ClubRepository extends PagingAndSortingRepository<Club, Long> {
-//    List<Club> findAllByName(String name);
+    List<Club> findAllByNameContains(String name);
 }

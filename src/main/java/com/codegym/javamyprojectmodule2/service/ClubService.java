@@ -17,7 +17,7 @@ public interface ClubService {
 
     void remove(Long id);
 
-//    List<Club> findAllByName(String name);
+    List<Club> findByName(String name);
 
 
 }
