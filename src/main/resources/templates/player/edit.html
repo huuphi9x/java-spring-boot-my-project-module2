@@ -5,27 +5,38 @@
 </head>
 <body>
 <p>
-    <a href="/">Back to list of club</a>
+    <a href="/player">Back to list of club</a>
 </p>
-<form th:action="@{/edit-club}" th:object="${club}" method="post">
+<form th:action="@{/edit-player}" th:object="${player}" method="post">
     <input th:type="hidden" name="id" th:field="*{id}">
     <table>
         <tr>
-            <td>Club Name</td>
+            <td>Player Name</td>
             <td><input type="text" th:field="*{name}"/></td>
         </tr>
         <tr>
-            <td>Stadium</td>
-            <td><input type="text" th:field="*{stadium}"/></td>
+            <td>Age</td>
+            <td><input type="text" th:field="*{age}"/></td>
         </tr>
         <tr>
-            <td>Tournaments</td>
+            <td>Position</td>
             <td>
-                <select name="tournaments">
-                    <option th:each="p : ${tournaments}"
+                <select name="position">
+                    <option th:each="p : ${position}"
                             th:value="${p.id}"
                             th:text="${p.name}"
-                            th:selected="(${p.id} == *{tournaments.id})"></option>
+                            th:selected="(${p.id} == *{position.id})"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Club</td>
+            <td>
+                <select name="club">
+                    <option th:each="p : ${clubs}"
+                            th:value="${p.id}"
+                            th:text="${p.name}"
+                    ></option>
                 </select>
             </td>
         </tr>
@@ -42,7 +53,7 @@
         </tr>
         <tr>
             <td></td>
-            <td><input type="submit" value="Update club"></td>
+            <td><input type="submit" value="Update player"></td>
         </tr>
     </table>
 </form>

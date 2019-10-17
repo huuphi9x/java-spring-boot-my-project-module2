@@ -5,7 +5,7 @@
 </head>
 <body>
 <p>
-    <a href="/static">Back to list of club</a>
+    <a href="/">Back to list of club</a>
 </p>
 <form action="#" th:action="@{/create-club}" th:object="${club}" method="post">
 <table border="1">
@@ -21,12 +21,24 @@
     </tr>
     <tr>
         <td>Tournaments</td>
-        <td><input type="text" th:field="*{tournaments}"></td>
+        <td>
+            <select name="tournaments">
+                <option th:each="p : ${tournaments}"
+                        th:value="${p.id}"
+                        th:text="${p.name}"
+                        th:selected="(${p.id} == *{tournaments.id})"></option>
+            </select>
+        </td>
         <td th:if="${#fields.hasErrors('tournaments')}" th:errors="*{tournaments}" style="color: brown"></td>
     </tr>
     <tr>
         <td>National</td>
-        <td><input type="text" th:field="*{national}"></td>
+        <td><select name="national">
+            <option th:each="p : ${national}"
+                    th:value="${p.id}"
+                    th:text="${p.name}"
+                    th:selected="(${p.id} == *{national.id})"></option>
+        </select></td>
         <td th:if="${#fields.hasErrors('national')}" th:errors="*{national}" style="color: brown"></td>
     </tr>
 </table>

@@ -2,13 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
 
-    <title></title>
+    <title>Search Club</title>
 </head>
 <body>
 <div class="container">
     <h2>Search for Club</h2>
     <div>
-        <h2>Students List</h2>
+        <h2>Clubs List</h2>
+        <p>
+            <a href="/">Back to list of club</a>
+        </p>
         <table border="1">
             <tr>
                 <th>Id</th>
@@ -26,6 +29,11 @@
             </tr>
         </table>
     </div>
+</div>
+<div>
+    <a th:href="@{'/search-club'(page=${clubList.number - 1})}" th:if="${clubList.hasPrevious()}">Previous</a>
+    <span th:text="${clubList.number + 1}"></span>/<span th:text="${clubList.totalPages}"></span>
+    <a th:href="@{'/search-club'(page=${clubList.number + 1})}" th:if="${clubList.hasNext()}">Next</a>
 </div>
 </body>
 </html>

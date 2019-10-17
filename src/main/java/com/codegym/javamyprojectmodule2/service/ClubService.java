@@ -4,7 +4,6 @@ import com.codegym.javamyprojectmodule2.model.Club;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.List;
 import java.util.Optional;
 
 
@@ -17,7 +16,9 @@ public interface ClubService {
 
     void remove(Long id);
 
-    List<Club> findByName(String name);
+    Page<Club> findByName(String name, Pageable pageable);
+
+    Iterable<Club> findAll();
 
 
 }

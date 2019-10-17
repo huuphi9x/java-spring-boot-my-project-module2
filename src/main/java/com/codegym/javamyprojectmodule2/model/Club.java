@@ -2,7 +2,7 @@ package com.codegym.javamyprojectmodule2.model;
 
 
 import javax.persistence.*;
-
+import java.util.List;
 
 
 @Entity
@@ -20,6 +20,17 @@ public class Club {
     private String tournaments;
 
     private String national;
+
+    @OneToMany(targetEntity = Player.class)
+    private List<Player> playerList;
+
+    public List<Player> getPlayerList() {
+        return playerList;
+    }
+
+    public void setPlayerList(List<Player> playerList) {
+        this.playerList = playerList;
+    }
 
     public Club() {
     }

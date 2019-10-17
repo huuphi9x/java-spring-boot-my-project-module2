@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Search Club</title>
+</head>
+<body>
+<div class="container">
+    <h2>Search for Player</h2>
+    <div>
+        <h2>Players List</h2>
+        <p>
+            <a href="/player">Back to list of player</a>
+        </p>
+        <table border="1">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Position</th>
+                <th>Club</th>
+                <th>National</th>
+            </tr>
+            <tr th:each="player: ${playerList}">
+                <td th:text="${player.id}">id</td>
+                <td th:text="${player.name}">name</td>
+                <td th:text="${player.age}">age</td>
+                <td th:text="${player.position}">position</td>
+                <td th:text="${player.club}">club</td>
+                <td th:text="${player.national}">national</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div>
+    <a th:href="@{'/search-club'(page=${playerList.number - 1})}" th:if="${playerList.hasPrevious()}">Previous</a>
+    <span th:text="${playerList.number + 1}"></span>/<span th:text="${playerList.totalPages}"></span>
+    <a th:href="@{'/search-club'(page=${playerList.number + 1})}" th:if="${playerList.hasNext()}">Next</a>
+</div>
+</body>
+</html>

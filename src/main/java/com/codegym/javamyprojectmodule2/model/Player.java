@@ -19,7 +19,18 @@ public class Player {
 
     private String national;
 
-    private String club;
+
+    @ManyToOne
+    @JoinColumn(name = "club_id")
+    private Club club;
+
+    public Club getClub() {
+        return club;
+    }
+
+    public void setClub(Club club) {
+        this.club = club;
+    }
 
     public Player() {
     }
@@ -64,11 +75,4 @@ public class Player {
         this.national = national;
     }
 
-    public String getClub() {
-        return club;
-    }
-
-    public void setClub(String club) {
-        this.club = club;
-    }
 }

@@ -3,6 +3,7 @@ package com.codegym.javamyprojectmodule2.controller;
 
 import com.codegym.javamyprojectmodule2.model.Club;
 import com.codegym.javamyprojectmodule2.service.ClubService;
+import com.codegym.javamyprojectmodule2.service.PlayerService;
 import com.codegym.javamyprojectmodule2.validate.ClubValidate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.util.List;
 import java.util.Optional;
 
 
@@ -24,6 +24,9 @@ public class ClubController {
 
     @Autowired
     private ClubService clubService;
+
+    @Autowired
+    private PlayerService playerService;
 
 
     @GetMapping("/")
@@ -93,9 +96,9 @@ public class ClubController {
     }
 
     @GetMapping("/search-club")
-    public ModelAndView showSearchClub(@RequestParam String name, RedirectAttributes redirectAttributes) {
-        List<Club> clubList = clubService.findByName(name);
-        if (clubList.size() != 0) {
+    public ModelAndView showSearchClub(@RequestParam String name, RedirectAttributes redirectAttributes, @PageableDefault(size = 5) Pageable pageable) {
+        Page<Club> clubList = clubService.findByName(name, pageable);
+        if (clubList.getSize() != 0) {
             ModelAndView modelAndView = new ModelAndView("club/search");
             modelAndView.addObject("clubList", clubList);
             return modelAndView;

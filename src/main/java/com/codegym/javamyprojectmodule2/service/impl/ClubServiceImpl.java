@@ -8,7 +8,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -39,8 +38,13 @@ public class ClubServiceImpl implements ClubService {
     }
 
     @Override
-    public List<Club> findByName(String name) {
-        return clubRepository.findAllByNameContains(name);
+    public Page<Club> findByName(String name, Pageable pageable) {
+        return clubRepository.findAllByNameContains(name, pageable);
+    }
+
+    @Override
+    public Iterable<Club> findAll() {
+        return clubRepository.findAll();
     }
 
 
