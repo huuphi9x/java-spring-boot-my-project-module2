@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Search Club</title>
+</head>
+<body>
+<div class="container">
+    <h2>Search for Tournaments</h2>
+    <div>
+        <h2>Tournaments List</h2>
+        <p>
+            <a href="/tournaments">Back to list of tournaments</a>
+        </p>
+        <table border="1">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>National</th>
+            </tr>
+            <tr th:each="tournaments: ${tournaments}">
+                <td th:text="${tournaments.id}">id</td>
+                <td th:text="${tournaments.name}">name</td>
+                <td th:text="${tournaments.national}">national</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div>
+    <a th:href="@{'/search-tournaments'(page=${tournaments.number - 1})}"
+       th:if="${tournaments.hasPrevious()}">Previous</a>
+    <span th:text="${tournaments.number + 1}"></span>/<span th:text="${tournaments.totalPages}"></span>
+    <a th:href="@{'/search-tournaments'(page=${tournaments.number + 1})}" th:if="${tournaments.hasNext()}">Next</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Tournaments</title>
+</head>
+<body>
+<p>
+    <a href="/tournaments">Back to list of tournaments</a>
+</p>
+<form action="#" th:action="@{/create-tournaments}" th:object="${tournaments}" method="post">
+    <table border="1">
+        <tr>
+            <td>Tournaments Name</td>
+            <td><input type="text" th:field="*{name}"></td>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: brown"></td>
+        </tr>
+        <tr>
+            <td>National</td>
+            <td>
+                <select name="national">
+                    <option th:each="p : ${national}"
+                            th:value="${p.id}"
+                            th:text="${p.name}"
+                            th:selected="(${p.id} == *{national.id})"></option>
+                </select>
+            </td>
+            <td th:if="${#fields.hasErrors('national')}" th:errors="*{national}" style="color: brown"></td>
+        </tr>
+    </table>
+    <button type="submit">Create</button>
+    <th:block th:if="${message}">
+        <p th:text="${message}"></p>
+    </th:block>
+</form>
+</body>
+</html>

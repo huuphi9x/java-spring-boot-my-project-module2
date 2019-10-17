@@ -8,7 +8,7 @@
     <a href="/create-club">Create a club</a>
 </p>
 <form th:object="${club}" th:action="@{/search-club}" method="get">
-    <input type="text" name="name" id="search" th:value="${search}"/>
+    <input type="text" required name="name" id="search" th:value="${search}"/>
     <input type="submit" value="Search"/>
 </form>
 <th:block th:if="${message}">
@@ -27,7 +27,7 @@
           <tr>
               <td th:text="${club.name}"></td>
               <td th:text="${club.stadium}"></td>
-              <td th:text="${club.tournaments}"></td>
+              <td th:text="${club.tournaments.name}"></td>
               <td th:text="${club.national}"></td>
               <td><a th:href="@{/edit-club/__${club.id}__ }">Edit</a></td>
               <td><a th:href="@{/delete-club/__${club.id}__ }">Delete</a></td>

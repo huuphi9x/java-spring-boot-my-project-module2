@@ -26,18 +26,18 @@
                 <option th:each="p : ${tournaments}"
                         th:value="${p.id}"
                         th:text="${p.name}"
-                        th:selected="(${p.id} == *{tournaments.id})"></option>
+                ></option>
             </select>
         </td>
         <td th:if="${#fields.hasErrors('tournaments')}" th:errors="*{tournaments}" style="color: brown"></td>
     </tr>
     <tr>
         <td>National</td>
-        <td><select name="national">
+        <td style="border: gainsboro"><select name="national">
             <option th:each="p : ${national}"
                     th:value="${p.id}"
                     th:text="${p.name}"
-                    th:selected="(${p.id} == *{national.id})"></option>
+            ></option>
         </select></td>
         <td th:if="${#fields.hasErrors('national')}" th:errors="*{national}" style="color: brown"></td>
     </tr>

@@ -17,12 +17,22 @@ public class Club {
 
     private String stadium;
 
-    private String tournaments;
-
     private String national;
 
     @OneToMany(targetEntity = Player.class)
     private List<Player> playerList;
+
+    @ManyToOne
+    @JoinColumn(name = "tournaments_id")
+    private Tournaments tournaments;
+
+    public Tournaments getTournaments() {
+        return tournaments;
+    }
+
+    public void setTournaments(Tournaments tournaments) {
+        this.tournaments = tournaments;
+    }
 
     public List<Player> getPlayerList() {
         return playerList;
@@ -35,10 +45,9 @@ public class Club {
     public Club() {
     }
 
-    public Club(String name, String stadium, String tournaments, String national) {
+    public Club(String name, String stadium, String national) {
         this.name = name;
         this.stadium = stadium;
-        this.tournaments = tournaments;
         this.national = national;
     }
 
@@ -66,13 +75,6 @@ public class Club {
         this.stadium = stadium;
     }
 
-    public String getTournaments() {
-        return tournaments;
-    }
-
-    public void setTournaments(String tournaments) {
-        this.tournaments = tournaments;
-    }
 
     public String getNational() {
         return national;

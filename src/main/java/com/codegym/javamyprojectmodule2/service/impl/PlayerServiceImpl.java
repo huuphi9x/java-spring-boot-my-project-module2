@@ -8,7 +8,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 
@@ -40,8 +39,8 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public List<Player> findByName(String name) {
-        return playerRepository.findAllByNameContains(name);
+    public Page<Player> findByName(String name, Pageable pageable) {
+        return playerRepository.findAllByNameContains(name, pageable);
     }
 
 }

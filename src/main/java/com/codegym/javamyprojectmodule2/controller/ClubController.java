@@ -2,8 +2,9 @@ package com.codegym.javamyprojectmodule2.controller;
 
 
 import com.codegym.javamyprojectmodule2.model.Club;
+import com.codegym.javamyprojectmodule2.model.Tournaments;
 import com.codegym.javamyprojectmodule2.service.ClubService;
-import com.codegym.javamyprojectmodule2.service.PlayerService;
+import com.codegym.javamyprojectmodule2.service.TournamentsService;
 import com.codegym.javamyprojectmodule2.validate.ClubValidate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,10 +26,14 @@ public class ClubController {
     @Autowired
     private ClubService clubService;
 
+
     @Autowired
-    private PlayerService playerService;
+    private TournamentsService tournamentsService;
 
-
+    @ModelAttribute("tournaments")
+    public Iterable<Tournaments> tournaments() {
+        return tournamentsService.findAll();
+    }
     @GetMapping("/")
     public ModelAndView showListClub(@PageableDefault(size = 5) Pageable pageable) {
         Page<Club> clubs = clubService.findAll(pageable);
@@ -98,7 +103,7 @@ public class ClubController {
     @GetMapping("/search-club")
     public ModelAndView showSearchClub(@RequestParam String name, RedirectAttributes redirectAttributes, @PageableDefault(size = 5) Pageable pageable) {
         Page<Club> clubList = clubService.findByName(name, pageable);
-        if (clubList.getSize() != 0) {
+        if (clubList.getTotalElements() > 0) {
             ModelAndView modelAndView = new ModelAndView("club/search");
             modelAndView.addObject("clubList", clubList);
             return modelAndView;

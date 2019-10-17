@@ -4,7 +4,6 @@ import com.codegym.javamyprojectmodule2.model.Player;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface PlayerService {
@@ -17,6 +16,6 @@ public interface PlayerService {
 
     void remove(Long id);
 
-    List<Player> findByName(String name);
+    Page<Player> findByName(String name, Pageable pageable);
 
 }

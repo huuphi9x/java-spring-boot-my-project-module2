@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Club List</title>
+</head>
+<body>
+<p>
+    <a href="/create-tournaments">Create a tournaments</a>
+</p>
+<form th:object="${tournaments}" th:action="@{/search-tournaments}" method="get">
+    <input type="text" required name="name" id="search" th:value="${search}"/>
+    <input type="submit" value="Search"/>
+</form>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<table border="1">
+    <tr>
+        <td>Tournaments Name</td>
+        <td>National</td>
+        <td>Edit</td>
+        <td>Delete</td>
+    </tr>
+
+    <tr th:each="p : ${tournaments}">
+        <td th:text="${p.name}"></td>
+        <td th:text="${p.national}"></td>
+        <td><a th:href="@{/edit-tournaments/__${p.id}__ }">Edit</a></td>
+        <td><a th:href="@{/delete-tournaments/__${p.id}__ }">Delete</a></td>
+    </tr>
+
+</table>
+<div>
+    <a th:href="@{'/tournaments'(page=${tournaments.number - 1})}" th:if="${tournaments.hasPrevious()}">Previous</a>
+    <span th:text="${tournaments.number + 1}"></span>/<span th:text="${tournaments.totalPages}"></span>
+    <a th:href="@{'/tournaments'(page=${tournaments.number + 1})}" th:if="${tournaments.hasNext()}">Next</a>
+</div>
+</body>
+</html>

@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -101,9 +100,9 @@ public class PlayerController {
     }
 
     @GetMapping("/search-player")
-    public ModelAndView showSearchPlayer(@RequestParam String name, RedirectAttributes redirectAttributes) {
-        List<Player> playerList = playerService.findByName(name);
-        if (playerList.size() != 0) {
+    public ModelAndView showSearchPlayer(@RequestParam String name, RedirectAttributes redirectAttributes, @PageableDefault(size = 5) Pageable pageable) {
+        Page<Player> playerList = playerService.findByName(name, pageable);
+        if (playerList.getTotalElements() != 0) {
             ModelAndView modelAndView = new ModelAndView("player/search");
             modelAndView.addObject("playerList", playerList);
             return modelAndView;

@@ -7,6 +7,13 @@
 <p>
     <a href="/create-player">Create a player</a>
 </p>
+<form th:object="${player}" th:action="@{/search-player}" method="get">
+    <input type="text" required name="name" id="search" th:value="${search}"/>
+    <input type="submit" value="Search"/>
+</form>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
 <table border="1">
     <tr>
         <td>Player Name</td>
