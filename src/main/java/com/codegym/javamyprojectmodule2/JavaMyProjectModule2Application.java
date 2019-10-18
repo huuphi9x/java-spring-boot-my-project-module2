@@ -44,7 +44,6 @@ public class JavaMyProjectModule2Application {
             registry.addFormatter(new PlayerFormatter(appContext.getBean(PlayerService.class)));
         }
 
-
         @Override
         public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
             appContext = applicationContext;

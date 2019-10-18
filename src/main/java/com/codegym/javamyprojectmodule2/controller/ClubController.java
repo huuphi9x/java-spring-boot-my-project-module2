@@ -138,4 +138,10 @@ public class ClubController {
         modelAndView.addObject("club",players);
         return modelAndView;
     }
+
+    @GetMapping("/")
+    public ModelAndView showHome(){
+        ModelAndView modelAndView = new ModelAndView("home");
+        return modelAndView;
+    }
 }
