@@ -24,13 +24,12 @@
         <td>Edit</td>
         <td>Delete</td>
     </tr>
-
     <tr th:each="p : ${players}">
         <td th:text="${p.name}"></td>
         <td th:text="${p.age}"></td>
-        <td th:text="${p.position}"></td>
+        <td th:text="${p.position.name}"></td>
         <td th:text="${p.club.name}"></td>
-        <td th:text="${p.national}"></td>
+        <td th:text="${p.national.name}"></td>
         <td><a th:href="@{/edit-player/__${p.id}__ }">Edit</a></td>
         <td><a th:href="@{/delete-player/__${p.id}__ }">Delete</a></td>
     </tr>

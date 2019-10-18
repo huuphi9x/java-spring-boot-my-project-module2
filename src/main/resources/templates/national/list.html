@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>National List</title>
+</head>
+<body>
+<p>
+    <a href="/create-national">Create a national</a>
+</p>
+<form th:object="${national}" th:action="@{/search-national}" method="get">
+    <input type="text" required name="name" id="search" th:value="${search}"/>
+    <input type="submit" value="Search"/>
+</form>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<table border="1">
+    <tr>
+       <td>National Name</td>
+        <td>Edit</td>
+        <td>Delete</td>
+    </tr>
+        <th:block th:each="national : ${nationals}">
+          <tr>
+              <td th:text="${national.name}"></td>
+              <td><a th:href="@{/edit-national/__${national.id}__ }">Edit</a></td>
+              <td><a th:href="@{/delete-national/__${national.id}__ }">Delete</a></td>
+          </tr>
+        </th:block>
+</table>
+<div>
+    <a th:href="@{'/national'(page=${nationals.number - 1})}" th:if="${nationals.hasPrevious()}">Previous</a>
+    <span th:text="${nationals.number + 1}"></span>/<span th:text="${nationals.totalPages}"></span>
+    <a th:href="@{'/national'(page=${nationals.number + 1})}" th:if="${nationals.hasNext()}">Next</a>
+</div>
+</body>
+</html>

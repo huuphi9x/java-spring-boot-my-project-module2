@@ -15,10 +15,34 @@ public class Player {
 
     private int age;
 
-    private String position;
+    public Player(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
 
-    private String national;
+    public National getNational() {
+        return national;
+    }
 
+    public void setNational(National national) {
+        this.national = national;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "position_id")
+    private Position position;
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "national_id")
+    private National national;
 
     @ManyToOne
     @JoinColumn(name = "club_id")
@@ -59,20 +83,15 @@ public class Player {
         this.age = age;
     }
 
-    public String getPosition() {
-        return position;
+    @Override
+    public String toString() {
+        return "Player{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", position=" + position +
+                ", national=" + national +
+                ", club=" + club +
+                '}';
     }
-
-    public void setPosition(String position) {
-        this.position = position;
-    }
-
-    public String getNational() {
-        return national;
-    }
-
-    public void setNational(String national) {
-        this.national = national;
-    }
-
 }

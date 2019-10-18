@@ -21,7 +21,14 @@
         </tr>
         <tr>
             <td>Position</td>
-            <td><input type="text" th:field="*{position}"></td>
+            <td>
+                <select name="position">
+                    <option th:each="p : ${position}"
+                            th:value="${p.id}"
+                            th:text="${p.name}"
+                    ></option>
+                </select>
+            </td>
             <td th:if="${#fields.hasErrors('position')}" th:errors="*{position}" style="color: brown"></td>
         </tr>
         <tr>
@@ -31,7 +38,7 @@
                     <option th:each="p : ${club}"
                             th:value="${p.id}"
                             th:text="${p.name}"
-                            th:selected="(${p.id} == *{club.id})"></option>
+                            ></option>
                 </select>
             </td>
             <td th:if="${#fields.hasErrors('club')}" th:errors="*{club}" style="color: brown"></td>
@@ -43,7 +50,7 @@
                     <option th:each="p : ${national}"
                             th:value="${p.id}"
                             th:text="${p.name}"
-                            th:selected="(${p.id} == *{national.id})"></option>
+                            ></option>
                 </select>
             </td>
             <td th:if="${#fields.hasErrors('national')}" th:errors="*{national}" style="color: brown"></td>

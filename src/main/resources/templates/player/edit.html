@@ -25,7 +25,7 @@
                     <option th:each="p : ${position}"
                             th:value="${p.id}"
                             th:text="${p.name}"
-                            th:selected="(${p.id} == *{position.id})"></option>
+                            ></option>
                 </select>
             </td>
         </tr>
@@ -33,7 +33,7 @@
             <td>Club</td>
             <td>
                 <select name="club">
-                    <option th:each="p : ${clubs}"
+                    <option th:each="p : ${club}"
                             th:value="${p.id}"
                             th:text="${p.name}"
                     ></option>
@@ -47,7 +47,7 @@
                     <option th:each="p : ${national}"
                             th:value="${p.id}"
                             th:text="${p.name}"
-                            th:selected="(${p.id} == *{national.id})"></option>
+                            ></option>
                 </select>
             </td>
         </tr>

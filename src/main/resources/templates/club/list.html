@@ -25,10 +25,10 @@
     </tr>
         <th:block th:each="club : ${clubs}">
           <tr>
-              <td th:text="${club.name}"></td>
+              <td><a th:href="@{/detail-club/__${club.id}__}" th:text="${club.name}"></a></td>
               <td th:text="${club.stadium}"></td>
               <td th:text="${club.tournaments.name}"></td>
-              <td th:text="${club.national}"></td>
+              <td th:text="${club.national.name}"></td>
               <td><a th:href="@{/edit-club/__${club.id}__ }">Edit</a></td>
               <td><a th:href="@{/delete-club/__${club.id}__ }">Delete</a></td>
           </tr>

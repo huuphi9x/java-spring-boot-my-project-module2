@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PlayerRepository extends PagingAndSortingRepository<Player, Long> {
     Page<Player> findAllByNameContains(String name, Pageable pageable);
+
+    Page<Player> findAllByClubId(Long clubId,Pageable pageable);
 }

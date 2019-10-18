@@ -1,9 +1,7 @@
 package com.codegym.javamyprojectmodule2;
 
-import com.codegym.javamyprojectmodule2.formatter.ClubFormatter;
-import com.codegym.javamyprojectmodule2.formatter.TournamentsFormatter;
-import com.codegym.javamyprojectmodule2.service.ClubService;
-import com.codegym.javamyprojectmodule2.service.TournamentsService;
+import com.codegym.javamyprojectmodule2.formatter.*;
+import com.codegym.javamyprojectmodule2.service.*;
 import org.springframework.beans.BeansException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -41,6 +39,9 @@ public class JavaMyProjectModule2Application {
         public void addFormatters(FormatterRegistry registry) {
             registry.addFormatter(new ClubFormatter(appContext.getBean(ClubService.class)));
             registry.addFormatter(new TournamentsFormatter(appContext.getBean(TournamentsService.class)));
+            registry.addFormatter(new NationalFormatter(appContext.getBean(NationalService.class)));
+            registry.addFormatter(new PositionFormatter(appContext.getBean(PositionService.class)));
+            registry.addFormatter(new PlayerFormatter(appContext.getBean(PlayerService.class)));
         }
 
 

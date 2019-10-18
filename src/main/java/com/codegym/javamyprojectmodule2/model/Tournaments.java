@@ -14,17 +14,18 @@ public class Tournaments {
 
     private String name;
 
-    private String national;
+    @ManyToOne
+    @JoinColumn(name = "national_id")
+    private National national;
 
-    @OneToMany(targetEntity = Player.class)
+    @OneToMany(targetEntity = Club.class)
     private List<Club> clubList;
 
     public Tournaments() {
     }
 
-    public Tournaments(String name, String national) {
+    public Tournaments(String name) {
         this.name = name;
-        this.national = national;
     }
 
     public Long getId() {
@@ -43,11 +44,11 @@ public class Tournaments {
         this.name = name;
     }
 
-    public String getNational() {
+    public National getNational() {
         return national;
     }
 
-    public void setNational(String national) {
+    public void setNational(National national) {
         this.national = national;
     }
 

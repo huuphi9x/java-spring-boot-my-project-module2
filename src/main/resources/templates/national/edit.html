@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Club</title>
+</head>
+<body>
+<p>
+    <a href="/national">Back to list of national</a>
+</p>
+<form th:action="@{/edit-national}" th:object="${national}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>National Name</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Update national"></td>
+        </tr>
+    </table>
+</form>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+</body>
+</html>

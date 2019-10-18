@@ -1,6 +1,8 @@
 package com.codegym.javamyprojectmodule2.controller;
 
+import com.codegym.javamyprojectmodule2.model.National;
 import com.codegym.javamyprojectmodule2.model.Tournaments;
+import com.codegym.javamyprojectmodule2.service.NationalService;
 import com.codegym.javamyprojectmodule2.service.TournamentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,6 +20,12 @@ import java.util.Optional;
 @Controller
 public class TournamentsController {
 
+    @Autowired
+    NationalService nationalService;
+    @ModelAttribute("national")
+    public Iterable<National> nationals() {
+        return nationalService.findAll();
+    }
 
     @Autowired
     private TournamentsService tournamentsService;
@@ -42,7 +50,7 @@ public class TournamentsController {
     public ModelAndView showSaveTournaments(@Valid @ModelAttribute("tournaments") Tournaments tournaments, BindingResult bindingResult) {
 //        new ClubValidate().validate(tournaments, bindingResult);
         if (bindingResult.hasFieldErrors()) {
-            ModelAndView modelAndView = new ModelAndView("tournaments/create");
+            ModelAndView modelAndView = new ModelAndView("redirect:/tournaments");
             return modelAndView;
         } else {
             tournamentsService.save(tournaments);

@@ -18,4 +18,6 @@ public interface PlayerService {
 
     Page<Player> findByName(String name, Pageable pageable);
 
+    Page<Player> findByClubId(Long clubId, Pageable pageable);
+
 }

@@ -24,7 +24,7 @@
 
     <tr th:each="p : ${tournaments}">
         <td th:text="${p.name}"></td>
-        <td th:text="${p.national}"></td>
+        <td th:text="${p.national.name}"></td>
         <td><a th:href="@{/edit-tournaments/__${p.id}__ }">Edit</a></td>
         <td><a th:href="@{/delete-tournaments/__${p.id}__ }">Delete</a></td>
     </tr>

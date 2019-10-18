@@ -8,7 +8,7 @@
 <h1>Delete customer</h1>
 <h2>Are you sure?</h2>
 <p>
-    <a href="/static">Customer list</a>
+    <a href="/club">Customer list</a>
 </p>
 <form th:action="@{/delete-club}" th:object="${club}" method="post">
     <input th:type="hidden" name="id" th:field="*{id}">
@@ -23,11 +23,11 @@
         </tr>
         <tr>
             <td>Tournaments:</td>
-            <td th:text="${club.tournaments}"></td>
+            <td th:text="${club.tournaments.name}"></td>
         </tr>
         <tr>
             <td>National:</td>
-            <td th:text="${club.national}"></td>
+            <td th:text="${club.national.name}"></td>
         </tr>
         <tr>
             <td></td>

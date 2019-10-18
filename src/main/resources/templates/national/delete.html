@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete National</title>
+</head>
+<body>
+<h1>Delete national</h1>
+<h2>Are you sure?</h2>
+<p>
+    <a href="/national">National list</a>
+</p>
+<form th:action="@{/delete-national}" th:object="${national}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table border="1">
+        <tr>
+            <td>National Name:</td>
+            <td th:text="${national.name}"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Delete National"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

@@ -43,4 +43,9 @@ public class PlayerServiceImpl implements PlayerService {
         return playerRepository.findAllByNameContains(name, pageable);
     }
 
+    @Override
+    public Page<Player> findByClubId(Long clubId, Pageable pageable) {
+        return playerRepository.findAllByClubId(clubId, pageable);
+    }
+
 }

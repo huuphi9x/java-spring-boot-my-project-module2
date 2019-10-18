@@ -1,10 +1,15 @@
 package com.codegym.javamyprojectmodule2.controller;
 
 
+import com.codegym.javamyprojectmodule2.formatter.PlayerFormatter;
 import com.codegym.javamyprojectmodule2.model.Club;
+import com.codegym.javamyprojectmodule2.model.National;
 import com.codegym.javamyprojectmodule2.model.Player;
+import com.codegym.javamyprojectmodule2.model.Position;
 import com.codegym.javamyprojectmodule2.service.ClubService;
+import com.codegym.javamyprojectmodule2.service.NationalService;
 import com.codegym.javamyprojectmodule2.service.PlayerService;
+import com.codegym.javamyprojectmodule2.service.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,7 +32,24 @@ public class PlayerController {
     @Autowired
     private ClubService clubService;
 
-    @ModelAttribute("clubs")
+
+    @Autowired
+    private NationalService nationalService;
+
+    @Autowired
+    private PositionService positionService;
+
+    @ModelAttribute("position")
+    public Iterable<Position> positions() {
+        return positionService.findAll();
+    }
+
+    @ModelAttribute("national")
+    public Iterable<National> nationals() {
+        return nationalService.findAll();
+    }
+
+    @ModelAttribute("club")
     public Iterable<Club> clubs() {
         return clubService.findAll();
     }
@@ -36,6 +58,9 @@ public class PlayerController {
     public ModelAndView showListPlayer(@PageableDefault(size = 5) Pageable pageable) {
         Page<Player> players = playerService.findAll(pageable);
         ModelAndView modelAndView = new ModelAndView("player/list");
+        for(Player list : players){
+            System.out.println(list.getClub().getName());
+        }
         modelAndView.addObject("players", players);
         return modelAndView;
     }

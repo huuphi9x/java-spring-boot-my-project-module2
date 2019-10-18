@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Search National</title>
+</head>
+<body>
+<div class="container">
+    <h2>Search for National</h2>
+    <div>
+        <h2>National List</h2>
+        <p>
+            <a href="/national">Back to list of national</a>
+        </p>
+        <table border="1">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+            <tr th:each="national: ${nationals}">
+                <td th:text="${national.id}">id</td>
+                <td th:text="${national.name}">name</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div>
+    <a th:href="@{'/search-national'(page=${nationals.number - 1})}" th:if="${nationals.hasPrevious()}">Previous</a>
+    <span th:text="${nationals.number + 1}"></span>/<span th:text="${nationals.totalPages}"></span>
+    <a th:href="@{'/search-national'(page=${nationals.number + 1})}" th:if="${nationals.hasNext()}">Next</a>
+</div>
+</body>
+</html>

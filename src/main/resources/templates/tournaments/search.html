@@ -21,7 +21,7 @@
             <tr th:each="tournaments: ${tournaments}">
                 <td th:text="${tournaments.id}">id</td>
                 <td th:text="${tournaments.name}">name</td>
-                <td th:text="${tournaments.national}">national</td>
+                <td th:text="${tournaments.national.name}">national</td>
             </tr>
         </table>
     </div>

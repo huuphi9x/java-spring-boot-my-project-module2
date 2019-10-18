@@ -25,9 +25,9 @@
                 <td th:text="${player.id}">id</td>
                 <td th:text="${player.name}">name</td>
                 <td th:text="${player.age}">age</td>
-                <td th:text="${player.position}">position</td>
-                <td th:text="${player.club}">club</td>
-                <td th:text="${player.national}">national</td>
+                <td th:text="${player.position.name}">position</td>
+                <td th:text="${player.club.name}">club</td>
+                <td th:text="${player.national.getName()}">national</td>
             </tr>
         </table>
     </div>

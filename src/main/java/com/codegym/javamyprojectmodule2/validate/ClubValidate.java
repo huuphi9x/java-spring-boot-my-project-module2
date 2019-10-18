@@ -18,7 +18,7 @@ public class ClubValidate implements Validator {
         String name = club.getName();
         String stadium = club.getStadium();
 //        String tournaments = club.getTournaments();
-        String national = club.getNational();
+//        String national = club.getNational();
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "name.empty");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "stadium", "stadium.empty");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "tournaments", "tournaments.empty");

@@ -5,7 +5,7 @@
 </head>
 <body>
 <p>
-    <a href="/">Back to list of club</a>
+    <a href="/club">Back to list of club</a>
 </p>
 <form th:action="@{/edit-club}" th:object="${club}" method="post">
     <input th:type="hidden" name="id" th:field="*{id}">
@@ -25,7 +25,7 @@
                     <option th:each="p : ${tournaments}"
                             th:value="${p.id}"
                             th:text="${p.name}"
-                            th:selected="(${p.id} == *{tournaments.id})"></option>
+                            ></option>
                 </select>
             </td>
         </tr>
@@ -36,7 +36,7 @@
                     <option th:each="p : ${national}"
                             th:value="${p.id}"
                             th:text="${p.name}"
-                            th:selected="(${p.id} == *{national.id})"></option>
+                            ></option>
                 </select>
             </td>
         </tr>

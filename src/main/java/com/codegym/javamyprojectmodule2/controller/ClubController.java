@@ -2,8 +2,12 @@ package com.codegym.javamyprojectmodule2.controller;
 
 
 import com.codegym.javamyprojectmodule2.model.Club;
+import com.codegym.javamyprojectmodule2.model.National;
+import com.codegym.javamyprojectmodule2.model.Player;
 import com.codegym.javamyprojectmodule2.model.Tournaments;
 import com.codegym.javamyprojectmodule2.service.ClubService;
+import com.codegym.javamyprojectmodule2.service.NationalService;
+import com.codegym.javamyprojectmodule2.service.PlayerService;
 import com.codegym.javamyprojectmodule2.service.TournamentsService;
 import com.codegym.javamyprojectmodule2.validate.ClubValidate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +21,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -26,15 +32,25 @@ public class ClubController {
     @Autowired
     private ClubService clubService;
 
+    @Autowired
+    private PlayerService playerService;
 
     @Autowired
     private TournamentsService tournamentsService;
+
+    @Autowired
+    private NationalService nationalService;
+
+    @ModelAttribute("national")
+    public Iterable<National> nationals() {
+        return nationalService.findAll();
+    }
 
     @ModelAttribute("tournaments")
     public Iterable<Tournaments> tournaments() {
         return tournamentsService.findAll();
     }
-    @GetMapping("/")
+    @GetMapping("/club")
     public ModelAndView showListClub(@PageableDefault(size = 5) Pageable pageable) {
         Page<Club> clubs = clubService.findAll(pageable);
         ModelAndView modelAndView = new ModelAndView("club/list");
@@ -96,7 +112,7 @@ public class ClubController {
     @PostMapping("/delete-club")
     public ModelAndView deleteClub(@ModelAttribute("club") Club club) {
         clubService.remove(club.getId());
-        ModelAndView modelAndView = new ModelAndView("redirect:/");
+        ModelAndView modelAndView = new ModelAndView("redirect:/club");
         return modelAndView;
     }
 
@@ -108,9 +124,18 @@ public class ClubController {
             modelAndView.addObject("clubList", clubList);
             return modelAndView;
         } else {
-            ModelAndView modelAndView = new ModelAndView("redirect:/");
+            ModelAndView modelAndView = new ModelAndView("redirect:/club");
             redirectAttributes.addFlashAttribute("message", "Not found");
             return modelAndView;
         }
+    }
+
+    @GetMapping("/detail-club/{id}")
+    public ModelAndView showDetailClub(@PathVariable Long id, @PageableDefault(size = 5) Pageable pageable){
+        Club club=clubService.findById(id).get();
+        Page<Player> players = playerService.findByClubId(club.getId(), pageable);
+        ModelAndView modelAndView= new ModelAndView("club/detail");
+        modelAndView.addObject("club",players);
+        return modelAndView;
     }
 }
