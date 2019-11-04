@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -39,11 +40,13 @@ public class NationalServiceImpl implements NationalService {
 
     @Override
     public Page<National> findByName(String name, Pageable pageable) {
-        return nationalRepository.findAllByNameContains(name,pageable);
+        return nationalRepository.findAllByNameContains(name, pageable);
     }
 
     @Override
-    public Iterable<National> findAll() {
-        return nationalRepository.findAll();
+    public List<National> findAll() {
+        return (List<National>) nationalRepository.findAll();
     }
+
 }
+

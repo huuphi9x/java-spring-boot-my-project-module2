@@ -141,7 +141,7 @@ public class ClubController {
 
     @GetMapping("/")
     public ModelAndView showHome(){
-        ModelAndView modelAndView = new ModelAndView("home");
+        ModelAndView modelAndView = new ModelAndView("/home");
         return modelAndView;
     }
 }

@@ -5,6 +5,7 @@ import com.codegym.javamyprojectmodule2.model.National;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface NationalService {
@@ -18,5 +19,7 @@ public interface NationalService {
 
     Page<National> findByName(String name, Pageable pageable);
 
-    Iterable<National> findAll();
+    List<National> findAll();
+
+
 }
