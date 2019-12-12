@@ -3,10 +3,57 @@
 <head>
     <title>Club List</title>
 </head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background: url("https://img.uefa.com/imgml/uefacom/ucl/fallback.jpg");
+        font-family: sans-serif;
+        color: #333;
+    }
+
+    #home ul {
+        background: #1F568B;
+        list-style-type: none;
+        text-align: center;
+    }
+
+    #home li {
+        color: #f1f1f1;
+        display: inline-block;
+        width: 120px;
+        height: 40px;
+        line-height: 40px;
+        margin-left: -5px;
+    }
+
+    #home a {
+        text-decoration: none;
+        color: #fff;
+        display: block;
+    }
+
+    #home a:hover {
+        background: #F1F1F1;
+        color: #333;
+    }
+</style>
 <body>
-<p>
-    <a href="/">Back to home</a>
-</p>
+<div id="home">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/club">Club</a></li>
+        <li><a href="/player">Player</a></li>
+        <li><a href="/national">National</a></li>
+        <li><a href="/tournaments">Tournament</a></li>
+        <li><a>Login</a></li>
+        <li><a href="/contact">Contact</a></li>
+        </p>
+    </ul>
+</div>
 <p>
     <a href="/create-club">Create a club</a>
 </p>

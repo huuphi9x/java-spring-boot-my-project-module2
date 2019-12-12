@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -43,8 +44,8 @@ public class TournamentsServiceImpl implements TournamentsService {
     }
 
     @Override
-    public Iterable<Tournaments> findAll() {
-        return tournamentsRepository.findAll();
+    public List<Tournaments> findAll() {
+        return (List<Tournaments>) tournamentsRepository.findAll();
     }
 
 }

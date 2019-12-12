@@ -1,39 +1,58 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 
     <meta charset="UTF-8">
     <title>Home</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
         body{
             background: url("https://img.uefa.com/imgml/uefacom/ucl/fallback.jpg");
+            font-family: sans-serif;
+            color: #333;
         }
-        a{
-            color: white;
+
+        #home ul {
+            background: #1F568B;
+            list-style-type: none;
+            text-align: center;
         }
-        h1{
-            color: whitesmoke;
+
+        #home li {
+            color: #f1f1f1;
+            display: inline-block;
+            width: 120px;
+            height: 40px;
+            line-height: 40px;
+            margin-left: -5px;
+        }
+
+        #home a {
+            text-decoration: none;
+            color: #fff;
+            display: block;
+        }
+
+        #home a:hover {
+            background: #F1F1F1;
+            color: #333;
         }
     </style>
 </head>
 <body>
-<center>
-<h1>Football Club Manager</h1>
-</center>
-<center style="margin-top: 250px">
     <div id="home">
-        <p>
-            <a href="/club">Go to the list of clubs</a>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/club">Club</a></li>
+            <li><a href="/player">Player</a></li>
+            <li><a href="/national">National</a></li>
+            <li><a href="/tournaments">Tournament</a></li>
+            <li><a>Login</a></li>
+            <li><a href="/contact">Contact</a></li>
         </p>
-        <p>
-            <a href="/player">Go to the list of player</a>
-        </p>
-        <p>
-            <a href="/national">Go to the list of national</a>
-        </p>
-        <p>
-            <a href="/tournaments">Go to the list of tournaments</a>
-        </p>
+        </ul>
     </div>
-</center>
 </body>
 </html>
